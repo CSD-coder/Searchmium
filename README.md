@@ -1,6 +1,6 @@
-# Min
+# Searchmium
 
-Min is a fast, minimal browser that protects your privacy. It includes an interface designed to minimize distractions, and features such as:
+Searchmium is a fast, minimal browser with the aim of giving you a better way to search. It includes an interface designed to minimize distractions, and features such as:
 
 - Full-text search for visited pages
 - Ad and tracker blocking
