@@ -1,47 +1,92 @@
+/* Base styles for Searchmium - A better way to search */
+/* CSS Custom Properties for easy theming and maintenance */
+:root {
+  --font-family: ".SFNSText-Regular", "BlinkMacSystemFont", "Helvetica Neue", "Segoe UI", "Arial", sans-serif;
+  --font-size-base: 16px;
+  --color-bg-light: #fff;
+  --color-text-light: #000;
+  --color-bg-dark: rgb(33, 37, 43);
+  --color-text-dark: lightgrey;
+  --color-focus: rgb(0, 117, 255);
+  --color-link-light: royalblue;
+  --color-link-dark: dodgerblue;
+  --color-input-bg-dark: rgb(52, 58, 68);
+  --color-scrollbar-track-light: rgba(0, 0, 0, 0.05);
+  --color-scrollbar-thumb-light: rgba(0, 0, 0, 0.175);
+  --color-scrollbar-track-dark: rgba(255, 255, 255, 0.25);
+  --color-scrollbar-thumb-dark: rgba(255, 255, 255, 0.6);
+}
+
+/* Reset and base styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-size: 16px;
-  font-family: ".SFNSText-Regular", "BlinkMacSystemFont", "Helvetica Neue",
-    "Segoe UI", "Arial", sans-serif;
 }
-/* TODO figure out why the default focus color in Electron is orange */
+
+body,
+html {
+  font-size: var(--font-size-base);
+  font-family: var(--font-family);
+  background-color: var(--color-bg-light);
+  color: var(--color-text-light);
+  height: 100%;
+  overflow: hidden;
+  -webkit-user-select: none;
+}
+
+/* Focus styles - improved for accessibility (visible outlines per WCAG) */
 *:focus {
-  outline-color: rgb(0, 117, 255);
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
 }
+
 .dark-mode *:focus {
-  outline-color: transparent;
+  outline-color: var(--color-focus); /* Kept visible in dark mode for usability */
 }
+
+/* Platform-specific tweaks */
 body.mac * {
   letter-spacing: 0.4px;
 }
+
+/* Utility classes */
 [hidden] {
   display: none !important;
 }
 
-/* buttons are styled like normal text by default */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.spacer {
+  height: 1em;
+}
+
+.light-fade {
+  opacity: 0.666;
+}
+
+/* Button reset */
 button {
   -webkit-appearance: none;
   background: none;
   border: none;
   color: inherit;
   outline: none;
-}
-body,
-html {
-  background-color: #fff;
-  color: #000;
-  height: 100%;
-  overflow: hidden;
-  -webkit-user-select: none;
+  cursor: pointer; /* Added for better UX */
 }
 
+/* Dark mode */
 body.dark-mode {
-  background-color: rgb(33, 37, 43);
-  color: lightgrey;
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-dark);
 }
 
+/* Headings */
 h1,
 h2,
 h3 {
@@ -52,62 +97,57 @@ h3 {
   color: inherit;
   text-align: center;
 }
+
 h2 {
   text-align: left;
   font-size: 2.75em;
 }
+
 h3 {
   text-align: left;
   font-size: 2em;
 }
+
 h1 + h2 {
   margin-top: -1em;
 }
-.centered {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
-}
-.spacer {
-  height: 1em;
-}
 
-.light-fade {
-  opacity: 0.666;
-}
-
+/* Links */
 a {
-  color: royalblue;
+  color: var(--color-link-light);
   text-decoration: none;
 }
 
 .dark-mode a {
-  color: dodgerblue;
+  color: var(--color-link-dark);
 }
 
+/* Form elements in dark mode */
 .dark-mode input,
 .dark-mode textarea {
-  background-color: rgb(52, 58, 68);
+  background-color: var(--color-input-bg-dark);
   color: white;
   border-color: transparent;
 }
 
-/* styled scrollbars */
-
+/* Styled scrollbars */
 .has-thin-scrollbar::-webkit-scrollbar {
   height: 0.25em;
 }
+
 .has-thin-scrollbar::-webkit-scrollbar-track {
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: var(--color-scrollbar-track-light);
 }
+
 .has-thin-scrollbar::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.175);
+  background-color: var(--color-scrollbar-thumb-light);
   border-radius: 0.25em;
 }
-.dark-theme .has-thin-scrollbar::-webkit-scrollbar-track {
-  background-color: rgba(255, 255, 255, 0.25);
+
+.dark-mode .has-thin-scrollbar::-webkit-scrollbar-track {
+  background-color: var(--color-scrollbar-track-dark);
 }
-.dark-theme .has-thin-scrollbar::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 255, 255, 0.6);
+
+.dark-mode .has-thin-scrollbar::-webkit-scrollbar-thumb {
+  background-color: var(--color-scrollbar-thumb-dark);
 }
