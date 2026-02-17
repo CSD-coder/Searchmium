@@ -1,38 +1,47 @@
+/* List Item Styles for Searchmium (Searchbar Results) */
+
+/* Searchbar Item Base */
 .searchbar-item {
   width: 100%;
   display: block;
   position: relative;
   padding: 8px 9px 9px 9px;
   cursor: pointer;
-  transition: 0.2s transform, 0.2s opacity;
+  transition: 0.2s transform, 0.2s opacity, 0.1s background-color; /* Smooth transitions */
+  border-radius: 3px; /* Subtle rounding for modern look */
 }
+
 .searchbar-item.placeholder {
   height: 36px;
 }
+
 .searchbar-item:after {
   content: "";
   clear: both;
   display: block;
 }
+
 .searchbar-item:hover {
   background-color: rgba(0, 0, 0, 0.04);
 }
+
 .searchbar-item:focus,
 .searchbar-item.fakefocus {
   background-color: rgba(0, 0, 0, 0.08);
-  outline: none;
+  outline: 2px solid var(--color-focus); /* Improved accessibility - visible focus */
+  outline-offset: 2px;
 }
-.dark-theme .theme-background-color .searchbar-item:hover,
+
 .dark-mode .searchbar-item:hover {
   background-color: rgba(255, 255, 255, 0.08);
 }
-.dark-theme .theme-background-color .searchbar-item:focus,
-.dark-theme .theme-background-color .searchbar-item.fakefocus,
+
 .dark-mode .searchbar-item:focus,
 .dark-mode .searchbar-item.fakefocus {
   background-color: rgba(255, 255, 255, 0.14);
 }
 
+/* Title */
 .searchbar-item .title {
   display: inline-block;
   vertical-align: middle;
@@ -40,11 +49,14 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  font-weight: 500; /* Slight emphasis for search results */
 }
+
 .searchbar-item .title.wide {
   max-width: 70%;
 }
 
+/* Icons */
 .searchbar-item > i,
 .searchbar-item .icon-image {
   position: absolute;
@@ -56,7 +68,7 @@
   height: 1em;
 }
 
-.dark-theme .theme-background-color .searchbar-item i {
+.dark-mode .searchbar-item > i {
   opacity: 0.33;
 }
 
@@ -64,8 +76,7 @@
   opacity: 1;
 }
 
-/* buttons */
-
+/* Action Buttons */
 .searchbar-item .action-button {
   position: absolute;
   width: 1.5em;
@@ -79,12 +90,12 @@
   cursor: pointer;
   opacity: 0;
   background: transparent;
-  transition: 0.05s;
+  transition: 0.05s opacity, 0.1s background-color;
   font-size: 1.2em;
   color: currentColor;
 }
-/* increase button click area
-:before is already used for icon */
+
+/* Increase button click area */
 .searchbar-item .action-button:after {
   content: "";
   width: 3em;
@@ -94,37 +105,46 @@
   display: block;
   position: absolute;
 }
+
 .searchbar-item:hover .action-button,
 .searchbar-item:focus .action-button,
 .searchbar-item .action-button.always-visible,
 body.touch .searchbar-item .action-button {
   opacity: 0.6;
 }
+
 .dark-mode .searchbar-item:hover .action-button,
 .dark-mode .searchbar-item:focus .action-button,
 .searchbar-item .action-button.always-visible,
 body.dark-mode.touch .searchbar-item .action-button {
   opacity: 0.8;
 }
+
 .searchbar-item .action-button:hover,
 .searchbar-item .action-button:focus {
   opacity: 1;
   background: rgba(0, 0, 0, 0.05);
 }
+
 .dark-mode .searchbar-item .action-button:hover,
 .dark-mode .searchbar-item .action-button:focus {
-  opacity: 1;
   background: rgba(0, 0, 0, 0.15);
 }
+
 .searchbar-item .action-button:active {
   background: rgba(0, 0, 0, 0.175);
 }
+
 .dark-mode .searchbar-item .action-button:active {
   background: rgba(0, 0, 0, 0.35);
 }
 
-/* alternative buttons - text, horizontal */
+.searchbar-item .action-button:focus {
+  outline: 2px solid var(--color-focus); /* Added for accessibility */
+  outline-offset: 2px;
+}
 
+/* Text Action Button Row */
 .searchbar-item .text-action-button-row button {
   padding: 0.25em;
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -136,6 +156,10 @@ body.dark-mode.touch .searchbar-item .action-button {
   margin: 0.5em 0.5em 0 0;
   max-width: 100%;
   vertical-align: top;
+  cursor: pointer;
+  background: transparent;
+  color: inherit;
+  transition: 0.1s background-color;
 }
 
 .dark-mode .searchbar-item .text-action-button-row button {
@@ -149,6 +173,8 @@ body.dark-mode.touch .searchbar-item .action-button {
 .searchbar-item .text-action-button-row button:focus,
 .searchbar-item:focus .text-action-button-row button.default-action {
   background-color: rgba(0, 0, 0, 0.1);
+  outline: 2px solid var(--color-focus); /* Added for accessibility */
+  outline-offset: 2px;
 }
 
 .dark-mode .searchbar-item .text-action-button-row button:focus,
@@ -156,23 +182,26 @@ body.dark-mode.touch .searchbar-item .action-button {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* secondary text */
-
+/* Secondary Text */
 .searchbar-item .secondary-text .md-info {
   float: left;
   opacity: 0.75;
   font-size: inherit;
 }
+
 .searchbar-item .secondary-text .md-info:first-child {
   padding-left: 0;
 }
+
 .searchbar-item .secondary-text .md-info:last-of-type {
   padding-right: 0.5em;
 }
+
 .searchbar-item .secondary-text .md-info + .md-info:before {
   content: "-";
   padding: 0 0.3em;
 }
+
 .searchbar-item .secondary-text {
   display: inline-block;
   opacity: 0.66;
@@ -186,15 +215,19 @@ body.dark-mode.touch .searchbar-item .action-button {
   max-height: 2em;
 }
 
+/* Image */
 .searchbar-item .image {
   height: 2.75em;
   margin: 0.25em 0.5em 0.5em 0;
   float: left;
+  border-radius: 3px; /* Subtle rounding */
 }
+
 .searchbar-item:focus .image {
   height: 4em;
 }
 
+/* Description Block */
 .searchbar-item .description-block {
   display: block;
   line-height: 1.175em;
@@ -205,16 +238,19 @@ body.dark-mode.touch .searchbar-item .action-button {
   margin-top: 0.1em;
   margin-right: 2.5em;
 }
+
 .searchbar-item .description-block strong {
   font-size: inherit;
   font-weight: 500;
 }
-/* when a result is selected, we can show more of the description */
+
+/* Show more description on focus for Searchmium's search emphasis */
 .searchbar-item:focus .description-block {
   max-height: none;
   opacity: 0.8;
 }
 
+/* Attribution */
 .searchbar-item .attribution {
   display: none;
   line-height: 1.15em;
@@ -222,25 +258,26 @@ body.dark-mode.touch .searchbar-item .action-button {
   opacity: 0.9;
   margin-top: 0.2em;
 }
+
 .searchbar-item:focus .attribution {
   display: block;
 }
 
-/* switch to a two-line layout */
-
+/* Responsive: Two-Line Layout for Small Screens */
 @media all and (max-width: 650px) {
   .searchbar-item .title {
     max-width: calc(100% - 50px);
   }
+
   .searchbar-item .secondary-text {
     display: block;
     max-width: 100%;
     padding-top: 0.1em;
     padding-left: 0;
-    /* prevents letters like "g" from being cut off */
-    line-height: 1em;
+    line-height: 1em; /* Prevents letters like "g" from being cut off */
   }
+
   .searchbar-item .image {
     display: none;
   }
-}
+/* } */
