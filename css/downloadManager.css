@@ -1,8 +1,11 @@
+/* Download Manager Styles for Searchmium */
+
+/* Download Bar */
 #download-bar {
   display: flex;
   position: absolute;
-  bottom: 0px;
-  left: 0px;
+  bottom: 0;
+  left: 0;
   background: rgb(250, 250, 250);
   width: 100%;
   border-top: 1px solid rgb(214, 214, 214);
@@ -30,6 +33,12 @@ body.task-overlay-is-shown #download-bar {
   background-color: rgba(255, 255, 255, 0.075);
 }
 
+#download-bar button:focus {
+  outline: 2px solid var(--color-focus); /* Added for accessibility */
+  outline-offset: 2px;
+}
+
+/* Download Container */
 #download-container {
   display: flex;
   flex: 1;
@@ -37,6 +46,7 @@ body.task-overlay-is-shown #download-bar {
   height: 39px;
 }
 
+/* Download Item */
 .download-item {
   display: inline-flex;
   align-items: center;
@@ -50,6 +60,7 @@ body.task-overlay-is-shown #download-bar {
   border-right: 1px rgb(230, 230, 230) solid;
   position: relative;
   transition: 0.05s background-color;
+  cursor: pointer; /* Added for better UX */
 }
 
 .dark-mode .download-item {
@@ -66,6 +77,12 @@ body.task-overlay-is-shown #download-bar {
   background-color: rgb(50, 55, 65);
 }
 
+.download-item:focus {
+  outline: 2px solid var(--color-focus); /* Improved accessibility */
+  outline-offset: 2px;
+}
+
+/* Download Title */
 .download-title {
   font-size: 0.9em;
   opacity: 0.9;
@@ -74,6 +91,11 @@ body.task-overlay-is-shown #download-bar {
   text-overflow: ellipsis;
 }
 
+.download-item:hover .download-title {
+  opacity: 1; /* Boosted for Searchmium's responsive feel */
+}
+
+/* Download Info */
 .download-info {
   display: inline-block;
   margin-top: 0.1em;
@@ -82,6 +104,7 @@ body.task-overlay-is-shown #download-bar {
   opacity: 0.7;
   white-space: nowrap;
 }
+
 .download-item:hover .download-info {
   display: none;
 }
@@ -96,15 +119,16 @@ body.task-overlay-is-shown #download-bar {
 
 .download-item.loading .download-info,
 .download-item.completed .download-info {
-  /* leave room for the action buttons */
+  /* Leave room for action buttons */
   padding-right: 32px;
 }
 
+/* Download Progress */
 .download-progress {
   width: calc(100% - 1em);
   height: 4px;
   margin-top: 0.33em;
-  background: rgb(22, 122, 224);
+  background: rgb(22, 122, 224); /* Tied to focus color for consistency */
   border-radius: 2px;
   position: absolute;
   top: calc(-0.5em + 2px);
@@ -122,14 +146,22 @@ body.task-overlay-is-shown #download-bar {
   opacity: 0;
 }
 
+/* Download Action Button */
 .download-action-button {
   position: absolute;
   right: 0.7em;
   opacity: 0.7;
   margin: auto;
   padding: 0.2em;
+  cursor: pointer;
 }
 
+.download-action-button:focus {
+  outline: 2px solid var(--color-focus); /* Added for accessibility */
+  outline-offset: 2px;
+}
+
+/* Download Close Button */
 #download-close-button {
   opacity: 0.66;
   font-size: 1.2em;
@@ -137,8 +169,14 @@ body.task-overlay-is-shown #download-bar {
   margin-left: 0.4em;
   padding: 0.2em;
   border-radius: 50%;
+  cursor: pointer;
 }
 
 .dark-mode #download-close-button {
   opacity: 0.9;
+}
+
+#download-close-button:focus {
+  outline: 2px solid var(--color-focus); /* Added for accessibility */
+  outline-offset: 2px;
 }
