@@ -1,3 +1,6 @@
+/* Bookmark Manager Styles for Searchmium */
+
+/* Bookmark Tag Bar */
 #bookmark-tag-bar {
   margin-top: 0.5em;
 }
@@ -6,15 +9,18 @@
   display: none;
 }
 
+/* Bookmark Editor */
 .bookmark-editor {
   background: transparent !important;
   margin-bottom: 3px;
 }
+
 .bookmark-editor:not(.simplified) {
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
   border-radius: 3px;
 }
-.dark-theme .bookmark-editor:not(.simplified) {
+
+.dark-mode .bookmark-editor:not(.simplified) {
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2);
 }
 
@@ -25,7 +31,9 @@
 .bookmark-editor .bookmark-delete-button {
   top: auto;
   bottom: calc(0.16em + 1px);
+  cursor: pointer; /* Added for better UX */
 }
+
 .bookmark-editor.simplified .bookmark-delete-button {
   position: static;
   margin-left: 0.75em;
@@ -38,6 +46,7 @@
   margin-bottom: 0.55em;
 }
 
+/* Searchbar Tags */
 #searchbar .tag {
   display: inline-block;
   padding: 0.33em 0.5em;
@@ -45,8 +54,10 @@
   background-color: rgba(0, 0, 0, 0.075);
   border: 2px transparent solid;
   opacity: 0.66;
+  cursor: pointer; /* Added for interactivity */
 }
-.dark-theme #searchbar .tag {
+
+.dark-mode #searchbar .tag {
   background-color: rgba(255, 255, 255, 0.075);
 }
 
@@ -55,7 +66,8 @@
   border-style: dotted;
   border-color: rgba(0, 0, 0, 0.125);
 }
-.dark-theme #searchbar .tag.suggested {
+
+.dark-mode #searchbar .tag.suggested {
   border-color: rgba(255, 255, 255, 0.3);
 }
 
@@ -64,25 +76,36 @@
 }
 
 #searchbar .tag.selected {
-  opacity: 1;
+  opacity: 1; /* Boosted for Searchmium's search focus */
+  background-color: rgba(0, 117, 255, 0.1); /* Subtle highlight using focus color */
+}
+
+.dark-mode #searchbar .tag.selected {
+  background-color: rgba(0, 117, 255, 0.2);
 }
 
 #searchbar .tag:hover {
   border-color: transparent;
   background-color: rgba(0, 0, 0, 0.1);
+  opacity: 0.8; /* Slight boost for visibility */
 }
-.dark-theme #searchbar .tag:hover {
+
+.dark-mode #searchbar .tag:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
 #searchbar .tag:focus {
+  outline: 2px solid var(--color-focus); /* Improved accessibility - visible focus */
+  outline-offset: 2px;
   border-color: transparent;
   background-color: rgba(0, 0, 0, 0.15);
 }
-.dark-theme #searchbar .tag:focus {
+
+.dark-mode #searchbar .tag:focus {
   background-color: rgba(255, 255, 255, 0.15);
 }
 
+/* Tag Edit Area */
 .tag-edit-area .tag-input {
   -webkit-appearance: none;
   padding: 0.35em 0.5em;
@@ -92,12 +115,15 @@
   border: 1px rgba(0, 0, 0, 0.125) solid;
   opacity: 0.8;
 }
+
 .tag-edit-area .tag + .tag-input {
   margin-left: 0.5em;
 }
-.dark-theme .tag-edit-area .tag-input {
+
+.dark-mode .tag-edit-area .tag-input {
   border-color: rgba(255, 255, 255, 0.3);
 }
-.dark-theme .tag-edit-area .tag-input::-webkit-input-placeholder {
+
+.dark-mode .tag-edit-area .tag-input::-webkit-input-placeholder {
   color: rgba(255, 255, 255, 0.66);
 }
