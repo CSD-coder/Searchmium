@@ -1,3 +1,6 @@
+/* Find-in-Page Bar Styles for Searchmium */
+
+/* Find-in-Page Bar Container */
 #findinpage-bar {
   display: flex;
   align-items: center;
@@ -7,40 +10,87 @@
   right: var(--control-space-right);
   height: 35px;
   z-index: 99;
+  background: var(--color-bg-light); /* Use variable for theming */
+  color: var(--color-text-light);
+  border-radius: 3px; /* Subtle rounding for modern look */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Added for depth */
 }
 
-/* leave room for menu button */
+.dark-mode #findinpage-bar {
+  background: var(--color-bg-dark);
+  color: var(--color-text-dark);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Adjust for menu button on Windows/Linux */
 body.windows #findinpage-bar,
 body.linux #findinpage-bar {
   left: calc(36px + var(--control-space-left));
 }
 
+/* Find-in-Page Input */
 #findinpage-bar #findinpage-input {
   flex: 1;
   -webkit-appearance: none;
   appearance: none;
   outline: none;
-  border: 0;
+  border: 1px solid transparent; /* Subtle border for focus */
   background: inherit;
   color: inherit;
   min-width: 80px;
+  padding: 0.5em; /* Boosted for better usability */
+  font-size: var(--font-size-base);
 }
+
+#findinpage-bar #findinpage-input:focus {
+  border-color: var(--color-focus); /* Highlight on focus for Searchmium's search emphasis */
+  outline: 2px solid var(--color-focus); /* Added for accessibility */
+  outline-offset: 2px;
+}
+
 #findinpage-bar #findinpage-input::-webkit-input-placeholder {
   opacity: 0.75;
   color: inherit;
 }
+
+/* Divider */
 #findinpage-bar .divider {
   height: 100%;
   width: 1em;
 }
+
+/* Inline Text */
 #findinpage-bar .inline-text {
   font-size: 0.85em;
   vertical-align: middle;
+  opacity: 0.8;
 }
+
+/* Buttons */
 #findinpage-bar button {
   padding: 0 0.25em;
   margin-top: 2px;
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer; /* Added for better UX */
+  border-radius: 3px; /* Consistent with bar */
+  transition: background-color 0.1s; /* Smooth hover */
 }
+
+#findinpage-bar button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode #findinpage-bar button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+#findinpage-bar button:focus {
+  outline: 2px solid var(--color-focus); /* Added for accessibility */
+  outline-offset: 2px;
+}
+
 #findinpage-bar .navbar-action-button {
   padding: 0;
   margin: 0;
